@@ -9,19 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Install
-        run: npm install
+        run: pnpm install
       - name: Run lint
-        run: npm run lint
+        run: pnpm lint
 
   typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Install
-        run: npm install
+        run: pnpm install
       - name: Run typecheck
-        run: npm run typecheck
+        run: pnpm typecheck
 
   tests:
     runs-on: ${{ matrix.os }}
@@ -33,14 +39,18 @@ jobs:
           - 21.x
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Install
-        run: npm install
+        run: pnpm install
       - name: Run tests
-        run: npm test
+        run: pnpm test
   windows:
     runs-on: windows-latest
     strategy:
@@ -50,11 +60,15 @@ jobs:
           - 21.x
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Install
-        run: npm install
+        run: pnpm install
       - name: Run tests
-        run: npm test
+        run: pnpm test
