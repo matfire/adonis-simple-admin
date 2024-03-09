@@ -80,7 +80,12 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/package"
+    "extends": "@adonisjs/eslint-config/package",
+    "ignorePatterns": [
+      "build",
+      "node_modules",
+      "example"
+    ]
   },
   "prettier": "@adonisjs/prettier-config"
 }
