@@ -6,7 +6,7 @@ import { defineConfig } from '@matfire/adonis-simple-admin'
 const simpleAdminConfig = defineConfig({
     models: [],
     path: '/admin',
-    templateNamescape: 'simple-admin'
+    templateNamespace: 'simple-admin'
 })
 
 export default simpleAdminConfig
