@@ -20,6 +20,7 @@
   "scripts": {
     "clean": "del-cli build",
     "copy:templates": "copyfiles \"stubs/**/*.stub\" build",
+    "copy:views": "copyfiles \"resources/**/**/*.edge\" build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
@@ -28,7 +29,7 @@
     "test": "c8 npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
     "build": "tsc",
-    "postbuild": "npm run copy:templates",
+    "postbuild": "npm run copy:templates && npm run copy:views",
     "release": "np",
     "version": "npm run build",
     "prepublishOnly": "npm run build",
