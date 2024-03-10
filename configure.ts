@@ -20,7 +20,7 @@ export async function configure(_command: ConfigureCommand) {
 
   await codemods.makeUsingStub(stubsRoot, 'config/simple_admin.stub', {})
   await codemods.updateRcFile((rcFile) => {
-    rcFile.addProvider('@matfire/adonis-simple-admin/simple_admin_provider')
+    rcFile.addProvider('@matfire/adonis-simple-admin/simple_admin_provider', ['web'])
     rcFile.addMetaFile('node_modules/@matfire/adonis-simple-admin/resources/**', false)
   })
 }
