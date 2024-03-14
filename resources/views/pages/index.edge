@@ -1,3 +1,7 @@
 @component(simpleAdminInclude("components/layout"))
-<p class="text-red-500">Hello world</p>
+  <ul>
+  @each(model in models)
+    <li><a href="{{route(simpleAdminNS + '.model.show', [model])}}">{{model}}</a>
+  @end
+  </ul>
 @end

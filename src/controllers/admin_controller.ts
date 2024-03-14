@@ -15,7 +15,8 @@ declare module '@adonisjs/core/http' {
 
 export default class AdminController {
   async index({ view }: HttpContext) {
-    const config = await app.config.get<SimpleAdminConfig>('simple_admin')
-    return view.render(`${config.templateNamespace}::pages/index`)
+    const config = app.config.get<SimpleAdminConfig>('simple_admin')
+    const models = config.models.map((m) => m.table)
+    return view.render(`${config.templateNamespace}::pages/index`, { models })
   }
 }
