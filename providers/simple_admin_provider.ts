@@ -3,6 +3,7 @@ import edge from 'edge.js'
 import { SimpleAdminConfig } from '../src/types/main.js'
 import AdminController from '../src/controllers/admin_controller.js'
 import ModelController from '../src/controllers/model_controller.js'
+import path from 'node:path'
 
 export default class SimpleAdminProvider {
   constructor(protected app: ApplicationService) {}
@@ -14,9 +15,17 @@ export default class SimpleAdminProvider {
     edge.global('simpleAdminInclude', (value: string) => {
       return `${adminConfig.templateNamespace}::${value}`
     })
+    edge.global('simpleAdminAsset', (value: string) => {
+      return `${adminConfig.path}/assets/${value}`
+    })
     edge.global('simpleAdminNS', `${adminConfig.templateNamespace}`)
     router
       .group(() => {
+        router.get('/assets/app.css', ({ response }) => {
+          return response.download(
+            path.resolve('node_modules/@matfire/adonis-simple-admin/build/resources/css/app.css')
+          )
+        })
         router.get('/', [AdminController, 'index']).as(`${adminConfig.templateNamespace}.index`)
         router
           .get('/model/:modelName', [ModelController, 'index'])
