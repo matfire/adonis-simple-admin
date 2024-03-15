@@ -16,16 +16,18 @@ export default class SimpleAdminProvider {
     })
     edge.global('simpleAdminNS', `${adminConfig.templateNamespace}`)
     router
-      .get(adminConfig.path, [AdminController, 'index'])
-      .as(`${adminConfig.templateNamespace}.index`)
-    router
-      .get(`${adminConfig.path}/model/:modelName`, [ModelController, 'index'])
-      .as(`${adminConfig.templateNamespace}.model.show`)
-    router
-      .get(`${adminConfig.path}/model/:modelName/new`, [ModelController, 'create'])
-      .as(`${adminConfig.templateNamespace}.model.create`)
-    router
-      .post(`${adminConfig.path}/model/:modelName`, [ModelController, 'store'])
-      .as(`${adminConfig.templateNamespace}.model.store`)
+      .group(() => {
+        router.get('/', [AdminController, 'index']).as(`${adminConfig.templateNamespace}.index`)
+        router
+          .get('/model/:modelName', [ModelController, 'index'])
+          .as(`${adminConfig.templateNamespace}.model.show`)
+        router
+          .get('/model/:modelName/new', [ModelController, 'create'])
+          .as(`${adminConfig.templateNamespace}.model.create`)
+        router
+          .post('/model/:modelName', [ModelController, 'store'])
+          .as(`${adminConfig.templateNamespace}.model.store`)
+      })
+      .prefix(adminConfig.path)
   }
 }
