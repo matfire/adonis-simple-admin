@@ -1,0 +1,15 @@
+
+
+@component(simpleAdminInclude("components/layout"))
+<div>
+  <form method="POST" action="{{route(simpleAdminNS + '.model.store', [modelName])}}">
+  @if (csrfField)
+      {{ csrfField() }}
+  @end
+  @each(input in formItems )
+    <input type='{{input.type}}' name='{{input.name}}' placeholder='{{input.name}}' />
+  @end
+  <button type="submit">submit</button>
+  </form>
+</div>
+@end

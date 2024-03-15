@@ -19,7 +19,13 @@ export default class SimpleAdminProvider {
       .get(adminConfig.path, [AdminController, 'index'])
       .as(`${adminConfig.templateNamespace}.index`)
     router
-      .get(`${adminConfig.path}/model/:modelName`, [ModelController, 'show'])
+      .get(`${adminConfig.path}/model/:modelName`, [ModelController, 'index'])
       .as(`${adminConfig.templateNamespace}.model.show`)
+    router
+      .get(`${adminConfig.path}/model/:modelName/new`, [ModelController, 'create'])
+      .as(`${adminConfig.templateNamespace}.model.create`)
+    router
+      .post(`${adminConfig.path}/model/:modelName`, [ModelController, 'store'])
+      .as(`${adminConfig.templateNamespace}.model.store`)
   }
 }
