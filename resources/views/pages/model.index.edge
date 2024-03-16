@@ -1,6 +1,6 @@
 
 @component(simpleAdminInclude("components/layout"))
-  <a href="{{route(simpleAdminNS + '.model.create', [modelName])}}">Add</a>
+  <a up-target="main" up-layer="new" href="{{route(simpleAdminNS + '.model.create', [modelName])}}">Add</a>
   <table>
     <thead>
       <tr>

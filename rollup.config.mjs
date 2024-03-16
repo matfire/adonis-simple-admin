@@ -6,6 +6,7 @@ import resolve from '@rollup/plugin-node-resolve'
 export default {
   input: {
     unpoly: 'resources/js/unpoly.js',
+    app: 'resources/js/app.js',
   },
   output: {
     dir: 'build/resources/js',

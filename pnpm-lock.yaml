@@ -38,6 +38,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.25
     version: 20.11.25
+  alpinejs:
+    specifier: ^3.13.7
+    version: 3.13.7
   c8:
     specifier: ^9.1.0
     version: 9.1.0
@@ -1874,6 +1877,22 @@ packages:
       }
     dev: true
 
+  /@vue/reactivity@3.1.5:
+    resolution:
+      {
+        integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==,
+      }
+    dependencies:
+      '@vue/shared': 3.1.5
+    dev: true
+
+  /@vue/shared@3.1.5:
+    resolution:
+      {
+        integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==,
+      }
+    dev: true
+
   /abort-controller@3.0.0:
     resolution:
       {
@@ -1951,6 +1970,15 @@ packages:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+    dev: true
+
+  /alpinejs@3.13.7:
+    resolution:
+      {
+        integrity: sha512-rcTyjTANbsePq1hb7eSekt3qjI94HLGeO6JaRjCssCVbIIc+qBrc7pO5S/+2JB6oojIibjM6FA+xRI3zhGPZIg==,
+      }
+    dependencies:
+      '@vue/reactivity': 3.1.5
     dev: true
 
   /ansi-align@3.0.1:

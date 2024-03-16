@@ -5,6 +5,11 @@ import AdminController from '../src/controllers/admin_controller.js'
 import ModelController from '../src/controllers/model_controller.js'
 import path from 'node:path'
 
+const assetMapper = (value: string) => {
+  if (value.endsWith('.js')) return `js/${value}`
+  if (value.endsWith('.css')) return `css/${value}`
+}
+
 export default class SimpleAdminProvider {
   constructor(protected app: ApplicationService) {}
   async boot() {
@@ -21,14 +26,11 @@ export default class SimpleAdminProvider {
     edge.global('simpleAdminNS', `${adminConfig.templateNamespace}`)
     router
       .group(() => {
-        router.get('/assets/app.css', ({ response }) => {
+        router.get('/assets/:value', ({ params, response }) => {
           return response.download(
-            path.resolve('node_modules/@matfire/adonis-simple-admin/build/resources/css/app.css')
-          )
-        })
-        router.get('/assets/unpoly.js', ({ response }) => {
-          return response.download(
-            path.resolve('node_modules/@matfire/adonis-simple-admin/build/resources/js/unpoly.js')
+            path.resolve(
+              `node_modules/@matfire/adonis-simple-admin/build/resources/${assetMapper(params.value)}`
+            )
           )
         })
         router.get('/', [AdminController, 'index']).as(`${adminConfig.templateNamespace}.index`)
