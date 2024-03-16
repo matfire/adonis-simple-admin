@@ -37,7 +37,7 @@ export default class ModelController {
     } catch (e) {
       console.log(e)
     }
-    return response.redirect().back()
+    return response.redirect().toRoute(`${config.templateNamespace}.model.show`, [modelName])
   }
   async create({ params, view }: HttpContext) {
     const { modelName } = params

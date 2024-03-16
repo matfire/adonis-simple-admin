@@ -1,24 +1,26 @@
 
 @component(simpleAdminInclude("components/layout"))
   <a up-target="main" up-layer="new" href="{{route(simpleAdminNS + '.model.create', [modelName])}}">Add</a>
-  <table>
+  <div class="w-full">
+  <table class="min-w-full divide-y divide-gray-300">
     <thead>
       <tr>
         @each(head in headers)
-          <th>{{head}}</th>
+          <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">{{head}}</th>
         @end
-        <th>actions</th>
+        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="divide-y divide-gray-200">
       @each (instance in instances)
         <tr>
           @each (head in headers)
-            <td>{{instance[head]}}</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{instance[head]}}</td>
           @end
           <td><a href="">edit</a></td>
         </tr>
       @end
     </tbody>
   </table>
+  </div>
 @end

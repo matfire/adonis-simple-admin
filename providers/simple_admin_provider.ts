@@ -24,6 +24,13 @@ export default class SimpleAdminProvider {
       return `${adminConfig.path}/assets/${value}`
     })
     edge.global('simpleAdminNS', `${adminConfig.templateNamespace}`)
+    edge.global(
+      'simpleAdminMenu',
+      adminConfig.models.map((m) => ({
+        name: m.table,
+        url: `${adminConfig.path}/model/${m.table}`,
+      }))
+    )
     router
       .group(() => {
         router.get('/assets/:value', ({ params, response }) => {
