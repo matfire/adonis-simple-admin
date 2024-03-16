@@ -26,6 +26,11 @@ export default class SimpleAdminProvider {
             path.resolve('node_modules/@matfire/adonis-simple-admin/build/resources/css/app.css')
           )
         })
+        router.get('/assets/unpoly.js', ({ response }) => {
+          return response.download(
+            path.resolve('node_modules/@matfire/adonis-simple-admin/build/resources/js/unpoly.js')
+          )
+        })
         router.get('/', [AdminController, 'index']).as(`${adminConfig.templateNamespace}.index`)
         router
           .get('/model/:modelName', [ModelController, 'index'])

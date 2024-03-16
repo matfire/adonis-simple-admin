@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" href="{{simpleAdminAsset('app.css')}}" />
+    <script defer src="{{simpleAdminAsset('unpoly.js')}}"></script>
 </head>
 
 <body>
-    <p class="text-red-500"></p>
     <main>
         {{{await $slots.main()}}}
     </main>
