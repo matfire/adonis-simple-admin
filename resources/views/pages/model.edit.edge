@@ -1,0 +1,14 @@
+
+@component(simpleAdminInclude("components/layout"))
+<div>
+  <form method="POST" action="{{route(simpleAdminNS + '.model.update', [modelName, id])}}">
+  @if (csrfField)
+      {{ csrfField() }}
+  @end
+  @each(input in formItems )
+    <input type='{{input.type}}' name='{{input.name}}' placeholder='{{input.name}}' value={{input.value ?? ''}} />
+  @end
+  <button type="submit">submit</button>
+  </form>
+</div>
+@end

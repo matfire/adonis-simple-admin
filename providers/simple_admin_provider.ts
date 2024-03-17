@@ -48,8 +48,14 @@ export default class SimpleAdminProvider {
           .get('/model/:modelName/new', [ModelController, 'create'])
           .as(`${adminConfig.templateNamespace}.model.create`)
         router
+          .get('/model/:modelName/edit/:id', [ModelController, 'edit'])
+          .as(`${adminConfig.templateNamespace}.model.edit`)
+        router
           .post('/model/:modelName', [ModelController, 'store'])
           .as(`${adminConfig.templateNamespace}.model.store`)
+        router
+          .put('/model/:modelName/edit/:id', () => 'ok')
+          .as(`${adminConfig.templateNamespace}.model.update`)
       })
       .prefix(adminConfig.path)
   }
