@@ -1,4 +1,5 @@
 @component(simpleAdminInclude("components/layout"))
+  {{ inspect($props) }}
   <a up-target="main" up-layer="new" href="{{route(simpleAdminNS + '.model.create', [modelName])}}" class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add</a>
   <div class="w-full">
   <table class="min-w-full divide-y divide-gray-300">
@@ -16,10 +17,11 @@
           @each (head in headers)
             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{instance[head]}}</td>
           @end
-          <td>
           {{--
+          <td>
             <a href="{{route(simpleAdminNS + '.model.edit', [modelName, instance[primaryKey]])}}" class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">edit</a>
-          </td> --}}
+          </td>
+          --}}
         </tr>
       @end
     </tbody>
